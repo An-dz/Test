@@ -10,4 +10,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Check migrations
-        run: sh .github/check_migrations.sh
+        run: bash .github/check_migrations.sh
