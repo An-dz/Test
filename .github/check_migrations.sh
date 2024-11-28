@@ -2,7 +2,7 @@
 
 # Define the two lists (arrays)
 all_migrations=($(ls prisma/migrations))
-new_migrations=($(/c/Program\ Files/Sublime\ Merge/Git/cmd/git.exe status --porcelain | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
+new_migrations=($(git status --porcelain | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
 
 # Iterate over list1 and remove items that are in list2
 current_migrations=()
