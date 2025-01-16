@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo AAAAAAA
 echo $(git status --porcelain)
 
 # get the new migration files (in stage)
