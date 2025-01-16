@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git diff --name-only HEAD^1 HEAD
+
 # get the new migration files (in stage)
 new_migrations=($(git diff --name-only HEAD^1 HEAD | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
 # get all migrations (existing + new)
