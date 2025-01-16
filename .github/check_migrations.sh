@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git status --porcelain
+echo $(git status --porcelain)
 
 # get the new migration files (in stage)
 new_migrations=($(git status --porcelain | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
