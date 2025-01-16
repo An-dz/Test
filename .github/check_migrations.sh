@@ -1,12 +1,9 @@
 #!/bin/bash
 
-echo AAAAAAA
-echo $(git status --porcelain)
-
 # get the new migration files (in stage)
-new_migrations=($(git status --porcelain | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
+new_migrations=($(git diff --name-only HEAD^1 HEAD | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
 # get all migrations (existing + new)
-all_migrations=($(ls "$(git status --porcelain | grep -Po '^.*/migrations/(?=\d+_[a-z_0-9]+)' | awk 'NR == 1 {print $2}')"))
+all_migrations=($(ls "$(git diff --name-only HEAD^1 HEAD | grep -Po '^.*/migrations/(?=\d+_[a-z_0-9]+)' | awk 'NR == 1 {print $2}')"))
 
 # iterate over all_migrations and remove items that are in new_migrations
 existing_migrations=()
