@@ -3,7 +3,7 @@
 # get the new migration files (in stage)
 new_migrations=($(git diff --name-only HEAD^1 HEAD | grep -Po "(?<=migrations/)\d+_[a-z_0-9]+"))
 # get all migrations (existing + new)
-migrations_paths = "$(git diff --name-only HEAD^1 HEAD | grep -Po '^.*/migrations/(?=\d+_[a-z_0-9]+)')"
+migrations_paths="$(git diff --name-only HEAD^1 HEAD | grep -Po '^.*/migrations/(?=\d+_[a-z_0-9]+)')"
 all_migrations=($(ls "$migrations_paths[0]"))
 
 # iterate over all_migrations and remove items that are in new_migrations
